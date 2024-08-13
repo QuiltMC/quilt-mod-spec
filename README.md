@@ -80,3 +80,4 @@ public Collection<String> getAllIcons(IconsV1 icons) {
     };
 }
 ```
+
