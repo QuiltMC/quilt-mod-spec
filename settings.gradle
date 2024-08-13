@@ -1,0 +1,2 @@
+rootProject.name = 'quilt-mod-spec'
+include 'quilt-mod-spec-java17'

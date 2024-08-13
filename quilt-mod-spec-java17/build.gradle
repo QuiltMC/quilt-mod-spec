@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'eclipse'
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir "src/generated/java"
+        }
+    }
+}
+
+repositories {
+    maven {
+        name = 'Quilt'
+        url = 'https://maven.quiltmc.org/repository/release'
+    }
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly "org.jetbrains:annotations:${project.annotations}"
+    api "org.quiltmc.parsers:json:${project.quilt_parsers}"
+    api project(":")
+}
+
+tasks.withType(AbstractArchiveTask) {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+}
+
+license {
+    rule project.rootProject.file("codeformat/HEADER")
+    include '**/*.java'
+}

@@ -28,3 +28,11 @@ bin/
 # Testing
 run/
 logs/
+
+# Source generation
+backup/
+
+# Shh
+quilt-mod-spec-0.1.8+local.jar
+
+
